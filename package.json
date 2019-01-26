@@ -1,7 +1,7 @@
 {
   "name": "io",
   "version": "1.0.0",
-  "description": "",
+  "description": "github page / io",
   "main": "doc/index.html",
   "directories": {
     "doc": "docs"
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/dragonHead/io/issues"
   },
-  "homepage": "https://github.com/dragonHead/io#readme"
+  "homepage": "https://github.com/dragonHead/io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  }
 }
