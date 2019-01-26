@@ -1,0 +1,22 @@
+{
+  "name": "io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "doc/index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragonHead/io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragonHead/io/issues"
+  },
+  "homepage": "https://github.com/dragonHead/io#readme"
+}
