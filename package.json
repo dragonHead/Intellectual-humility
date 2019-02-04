@@ -20,13 +20,27 @@
   },
   "homepage": "https://github.com/dragonHead/io#readme",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "del": "^3.0.0",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1",
     "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-watch": "^5.0.1",
     "prettier": "^1.16.3",
     "webpack": "^4.29.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5"
   }
 }
