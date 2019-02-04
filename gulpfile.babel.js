@@ -1,5 +1,7 @@
 
-import { gulp, src, dest, series, parallel } from 'gulp';
+import {
+  src, dest, series, parallel,
+} from 'gulp';
 import htmlmin from 'gulp-htmlmin';
 import del from 'del';
 
