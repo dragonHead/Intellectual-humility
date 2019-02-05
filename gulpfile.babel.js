@@ -18,10 +18,16 @@ export function html() {
     .pipe(dest(paths.distDir));
 }
 
+export function robots() {
+  return src(`${paths.srcDir}/robots.txt`)
+    .pipe(dest(paths.distDir));
+}
+
 const build = series(
   clean,
   parallel(
     html,
+    robots,
   ),
 );
 
