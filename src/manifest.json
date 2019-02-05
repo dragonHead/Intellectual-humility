@@ -3,7 +3,7 @@
   "dir": "ltr",
   "name": "dragonHead Labs io",
   "short_name": "Labs io",
-  "start_url": "/",
+  "start_url": "/io",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
