@@ -1,1 +1,33 @@
-{"lang":"ja","dir":"ltr","name":"dragonHead Labs io","short_name":"Labs io","start_url":"/","display":"standalone","orientation":"portrait","background_color":"#fff","theme_color":"#fff","description":"","serviceworker":{"src":"serviceWorker.js","scope":"/"},"icons":[{"src":"","type":"image/png","sizes":"128x128"},{"src":"","type":"image/png","sizes":"152x152"},{"src":"","type":"image/png","sizes":"144x144"},{"src":"","type":"image/png","sizes":"192x192"}]}
+{
+  "lang": "ja",
+  "dir": "ltr",
+  "name": "dragonHead Labs io",
+  "short_name": "Labs io",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "description": "",
+  "serviceworker": {
+    "src": "serviceWorker.js",
+    "scope": "/"
+  },
+  "icons": [{
+      "src": "",
+      "type": "image/png",
+      "sizes": "128x128"
+    }, {
+      "src": "",
+      "type": "image/png",
+      "sizes": "152x152"
+    }, {
+      "src": "",
+      "type": "image/png",
+      "sizes": "144x144"
+    }, {
+      "src": "",
+      "type": "image/png",
+      "sizes": "192x192"
+    }]
+}

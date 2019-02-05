@@ -36,7 +36,6 @@ export function xml() {
 // manifest.json
 export function json() {
   return src(`${paths.srcDir}/manifest.json`)
-    .pipe(jsonmin())
     .pipe(dest(paths.distDir));
 }
 
