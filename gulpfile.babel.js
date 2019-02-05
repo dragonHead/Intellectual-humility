@@ -3,6 +3,7 @@ import {
   src, dest, series, parallel,
 } from 'gulp';
 import htmlmin from 'gulp-htmlmin';
+import jsonmin from 'gulp-jsonminify';
 import del from 'del';
 
 const paths = {
@@ -32,12 +33,20 @@ export function xml() {
     .pipe(dest(paths.distDir));
 }
 
+// manifest.json
+export function json() {
+  return src(`${paths.srcDir}/manifest.json`)
+    .pipe(jsonmin())
+    .pipe(dest(paths.distDir));
+}
+
 const build = series(
   clean,
   parallel(
     html,
     robots,
     xml,
+    json,
   ),
 );
 
