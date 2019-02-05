@@ -1,9 +1,8 @@
 
 import {
-  gulp, src, dest, series, parallel,
+  gulp, src, dest, series, parallel, watch,
 } from 'gulp';
 import htmlmin from 'gulp-htmlmin';
-import watch from 'gulp-watch';
 import jsonmin from 'gulp-jsonminify';
 import del from 'del';
 
@@ -41,6 +40,7 @@ export function json() {
     .pipe(dest(paths.distDir));
 }
 
+// watch
 export function wt() {
   watch('./src/**/*.html', series(html));
   watch('./src/sitemap.xml', series(xml));
