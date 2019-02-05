@@ -1,8 +1,9 @@
 
 import {
-  src, dest, series, parallel,
+  gulp, src, dest, series, parallel,
 } from 'gulp';
 import htmlmin from 'gulp-htmlmin';
+import watch from 'gulp-watch';
 import jsonmin from 'gulp-jsonminify';
 import del from 'del';
 
@@ -40,6 +41,13 @@ export function json() {
     .pipe(dest(paths.distDir));
 }
 
+export function wt() {
+  watch('./src/**/*.html', series(html));
+  watch('./src/sitemap.xml', series(xml));
+  watch('./src/robots.txt', series(robots));
+  watch('./src/manifest.json', series(json));
+}
+
 const build = series(
   clean,
   parallel(
@@ -50,4 +58,10 @@ const build = series(
   ),
 );
 
-export default build;
+const develop = series(
+  build,
+  wt,
+);
+
+exports.default = build;
+exports.dev = develop;
