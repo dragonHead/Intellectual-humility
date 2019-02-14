@@ -47,6 +47,8 @@
     "gulp-replace": "^1.0.0",
     "html-webpack-inline-source-plugin": "0.0.10",
     "prettier": "^1.16.3",
+    "puppeteer": "^1.12.2",
+    "puppeteer-core": "^1.12.2",
     "retire": "^2.0.2",
     "selenium-standalone": "^6.15.4",
     "webdriverio": "^5.4.17",
