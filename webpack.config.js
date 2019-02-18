@@ -1,0 +1,32 @@
+const path = require('path');
+
+module.exports = {
+  mode: 'development',
+  devServer: {
+    open: true,
+    openPage: 'index.html',
+    contentBase: path.join(__dirname, 'docs'),
+    watchContentBase: true,
+    port: 8080,
+  },
+  entry: { app: './src/js/index.js' },
+  output: {
+    path: path.join(__dirname, 'docs/js'),
+    publicPath: '/js/',
+    filename: '[name].js',
+    library: ['com', 'example'],
+    libraryTarget: 'umd',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  devtool: 'inline-source-map',
+};
