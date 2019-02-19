@@ -11,7 +11,7 @@ module.exports = {
   },
   entry: { app: './src/js/index.js' },
   output: {
-    path: path.join(__dirname, 'docs/js'),
+    path: path.join(__dirname, 'docs'),
     publicPath: '/js/',
     filename: '[name].js',
     library: ['com', 'example'],

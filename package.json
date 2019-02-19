@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --hot",
     "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
@@ -48,6 +48,8 @@
     "gulp-inline-source": "^4.0.0",
     "gulp-jsonminify": "^1.1.0",
     "gulp-replace": "^1.0.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-rev-rewrite": "^1.1.4",
     "html-webpack-inline-source-plugin": "0.0.10",
     "mocha": "^5.2.0",
     "prettier": "^1.16.3",
