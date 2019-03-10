@@ -14,7 +14,6 @@ module.exports = {
     path: path.join(__dirname, 'docs'),
     publicPath: '/js/',
     filename: '[name].js',
-    library: ['com', 'example'],
     libraryTarget: 'umd',
   },
   module: {
