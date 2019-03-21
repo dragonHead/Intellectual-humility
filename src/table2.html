@@ -8,7 +8,6 @@
   div.table
   {
   	display:table;
-  	width:100px;
   	background-color:lightblue;
   	border-collapse:collapse;
   	border:1px solid red
@@ -23,8 +22,6 @@
   {
   	display:table-cell;
   	border:1px solid red;
-  	height:50px;
-  	width:50%;
   }
 
   div.rowspan
@@ -67,20 +64,20 @@
     <div class="row">
   		<div class="cell rowspan">
   			<div>
-          <div>&nbsp;</div>
+          <div style="width:5px;"></div>
         </div>
   		</div>
-  		<div class="cell">&nbsp;</div>
+  		<div class="cell" style="width:100px;">&nbsp;</div>
   		<div class="cell">cell 5</div>
   	</div>
     <div class="row">
-  		<div class="cell noborder">&nbsp;</div>
-  		<div class="cell">cell 5</div>
+  		<div class="cell noborder" style="width:5px;"></div>
+  		<div class="cell" style="width:100px;">cell 5</div>
       <div class="cell">cell 5</div>
   	</div>
     <div class="row">
-  		<div class="cell noborder">&nbsp;</div>
-  		<div class="cell">cell 5</div>
+  		<div class="cell noborder" style="width:5px;"></div>
+  		<div class="cell" style="width:100px;">cell 5</div>
   		<div class="cell">cell 5</div>
   	</div>
     <div class="row">
