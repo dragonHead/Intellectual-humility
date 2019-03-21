@@ -150,6 +150,7 @@ const prod = series(
 
 const develop = series(
   build,
+  webpackbuilddev,
   parallel(
     wt,
     server,
