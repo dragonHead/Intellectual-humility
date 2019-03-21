@@ -11,7 +11,7 @@ module.exports = {
   },
   entry: { app: './src/js/index.js' },
   output: {
-    path: path.join(__dirname, 'docs'),
+    path: path.join(__dirname, 'docs/js'),
     publicPath: '/js/',
     filename: '[name].js',
     libraryTarget: 'umd',
