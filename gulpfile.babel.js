@@ -2,17 +2,19 @@
 import {
   src, dest, series, parallel, watch,
 } from 'gulp';
+// import gutil from 'gulp-util';
 import htmlmin from 'gulp-htmlmin';
 import imagemin from 'gulp-imagemin';
 import cleanCSS from 'gulp-clean-css';
 import uglify from 'gulp-uglify';
 import plumber from 'gulp-plumber';
 import jsonmin from 'gulp-jsonminify';
+import webserver from 'gulp-webserver';
 import workbox from 'workbox-build';
 import webpackStream from 'webpack-stream';
 import webpack from 'webpack';
 import del from 'del';
-
+// import DevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config';
 
 const paths = {
@@ -61,7 +63,7 @@ export function generateServiceWorker() {
     swDest: `${paths.srcDir}/serviceWorker.js`,
     clientsClaim: true,
     skipWaiting: true,
-  }).then(({warnings}) => {
+  }).then(({ warnings }) => {
     for (const warning of warnings) {
       console.warn(warning);
     }
@@ -87,7 +89,13 @@ export function pwajson() {
 }
 
 // webpack
-export function pack() {
+export function webpackbuild() {
+  webpackConfig.mode = 'production';
+  return webpackStream(webpackConfig, webpack)
+    .pipe(dest(`${paths.distDir}/js/`));
+}
+
+export function webpackbuilddev() {
   return webpackStream(webpackConfig, webpack)
     .pipe(dest(`${paths.distDir}/js/`));
 }
@@ -98,8 +106,28 @@ export function wt() {
   watch('./src/sitemap.xml', series(xml));
   watch('./src/robots.txt', series(robots));
   watch('./src/manifest.json', series(pwajson));
-  watch('./src//css/**/*.css', series(css));
+  watch('./src/css/**/*.css', series(css));
+  watch('./src/js/**/*.js', series(webpackbuilddev));
 }
+
+export function server() {
+  return src(paths.distDir)
+    .pipe(
+      webserver({
+        host: 'localhost',
+        port: '8080',
+        livereload: true,
+        open: true,
+      }),
+    );
+}
+/*
+export function webpackDevServer() {
+  new DevServer(webpack(webpackConfig)).listen(8080, 'localhost', (err) => {
+    if (err) throw new gutil.PluginError('webpack-dev-server', err);
+    gutil.log('[webpack-dev-server]', 'http://localhost:8080/index.html');
+  });
+} */
 
 const build = series(
   clean,
@@ -110,16 +138,24 @@ const build = series(
     pwajson,
     css,
     img,
-    pack,
   ),
   generateServiceWorker,
   pwajs,
 );
 
+const prod = series(
+  build,
+  webpackbuild,
+);
+
 const develop = series(
   build,
-  wt,
+  parallel(
+    wt,
+    server,
+  ),
 );
 
 exports.default = build;
 exports.dev = develop;
+exports.prod = prod;

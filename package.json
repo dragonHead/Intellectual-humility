@@ -59,6 +59,8 @@
     "gulp-rev": "^9.0.0",
     "gulp-rev-rewrite": "^1.1.4",
     "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "gulp-webserver": "^0.9.1",
     "html-webpack-inline-source-plugin": "0.0.10",
     "mocha": "^5.2.0",
     "prettier": "^1.16.4",
