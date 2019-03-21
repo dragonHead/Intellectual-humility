@@ -1,0 +1,67 @@
+<!doctype html><hthml><head><meta charset="utf-8"><title>table test2</title></head><style>div.table
+  {
+  	display:table;
+  	width:100px;
+  	background-color:lightblue;
+  	border-collapse:collapse;
+  	border:1px solid red
+  }
+
+  div.row
+  {
+  	display:table-row;
+  }
+
+  div.cell
+  {
+  	display:table-cell;
+  	border:1px solid red;
+  	height:50px;
+  	width:50%;
+  }
+
+  div.rowspan
+  {
+  	border:0;
+  }
+
+  div.rowspan>div
+  {
+  	height:1px;
+  }
+
+  div.rowspan>div>div
+  {
+  	position:relative;
+  	height:100px;
+  	overflow:hidden;
+  }
+
+  div.noborder
+  {
+  	border:0;
+  }
+
+  span
+  {
+  	font-family:monospace;
+  }
+
+  body::after
+  {
+  	display:block;
+  	content:"© Mäkisen Paja 2015";
+  	font-family:monospace;
+  	text-align:center;
+  }</style><body><div class="table"><div class="row"><div class="cell rowspan"><div><div>&nbsp;</div></div></div><div class="cell">&nbsp;</div><div class="cell">cell 5</div></div><div class="row"><div class="cell noborder">&nbsp;</div><div class="cell">cell 5</div><div class="cell">cell 5</div></div><div class="row"><div class="cell noborder">&nbsp;</div><div class="cell">cell 5</div><div class="cell">cell 5</div></div><div class="row"><div class="cell noborder">&nbsp;</div><div class="cell">cell 5</div><div class="cell">cell 5</div></div><!--
+  	<div class="row">
+  		<div class="cell">cell 1</div>
+  		<div class="cell">cell 2</div>
+  	</div>
+
+
+  	<div class="row">
+  		<div class="cell">cell 6</div>
+  		<div class="cell">cell 7</div>
+  	</div>
+    --></div></body></hthml>

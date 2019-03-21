@@ -1,6 +1,6 @@
 
 import {
-  gulp, src, dest, series, parallel, watch,
+  src, dest, series, parallel, watch,
 } from 'gulp';
 import htmlmin from 'gulp-htmlmin';
 import imagemin from 'gulp-imagemin';
@@ -9,7 +9,11 @@ import uglify from 'gulp-uglify';
 import plumber from 'gulp-plumber';
 import jsonmin from 'gulp-jsonminify';
 import workbox from 'workbox-build';
+import webpackStream from 'webpack-stream';
+import webpack from 'webpack';
 import del from 'del';
+
+import webpackConfig from './webpack.config';
 
 const paths = {
   srcDir: './src',
@@ -82,6 +86,12 @@ export function pwajson() {
     .pipe(dest(paths.distDir));
 }
 
+// webpack
+export function pack() {
+  return webpackStream(webpackConfig, webpack)
+    .pipe(dest(`${paths.distDir}/js/`));
+}
+
 // watch
 export function wt() {
   watch('./src/**/*.html', series(html));
@@ -100,6 +110,7 @@ const build = series(
     pwajson,
     css,
     img,
+    pack,
   ),
   generateServiceWorker,
   pwajs,
