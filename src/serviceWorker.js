@@ -49,7 +49,7 @@ self.__precacheManifest = [
   },
   {
     "url": "table2.html",
-    "revision": "8ba7a9410d1362e1946b4cd12bd954da"
+    "revision": "baa2371b135e1399e23a282484ca2558"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
