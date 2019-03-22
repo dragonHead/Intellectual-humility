@@ -1,20 +1,18 @@
-'use strict'
-
-import { src, dest, series, parallel, watch } from 'gulp'
-// import gutil from 'gulp-util';
-import htmlmin from 'gulp-htmlmin'
-import imagemin from 'gulp-imagemin'
-import cleanCSS from 'gulp-clean-css'
-import uglify from 'gulp-uglify'
-import plumber from 'gulp-plumber'
-import jsonmin from 'gulp-jsonminify'
-import webserver from 'gulp-webserver'
-import workbox from 'workbox-build'
-import webpackStream from 'webpack-stream'
-import webpack from 'webpack'
-import del from 'del'
-// import DevServer from 'webpack-dev-server';
-import webpackConfig from './webpack.config'
+const { src, dest, series, parallel, watch } = require('gulp')
+// const gutil = require('gulp-util')
+const htmlmin = require('gulp-htmlmin')
+const imagemin = require('gulp-imagemin')
+const cleanCSS = require('gulp-clean-css')
+const uglify = require('gulp-uglify')
+const plumber = require('gulp-plumber')
+const jsonmin = require('gulp-jsonminify')
+const webserver = require('gulp-webserver')
+const workbox = require('workbox-build')
+const webpackStream = require('webpack-stream')
+const webpack = require('webpack')
+const del = require('del')
+// const DevServer = require('webpack-dev-server')
+const webpackConfig = require('./webpack.config')
 
 const paths = {
   srcDir: './src',
@@ -22,39 +20,39 @@ const paths = {
 }
 
 // clean
-export const clean = () =>
+const clean = () =>
   del([`${paths.distDir}/**`, '!dist'], { force: true })
 
 // html
-export function html () {
+function html () {
   return src(`${paths.srcDir}/**/*.html`)
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(dest(paths.distDir))
 }
 
 // sitemap.xml
-export function xml () {
+function xml () {
   return src(`${paths.srcDir}/sitemap.xml`).pipe(dest(paths.distDir))
 }
 
 // robts
-export function robots () {
+function robots () {
   return src(`${paths.srcDir}/robots.txt`).pipe(dest(paths.distDir))
 }
 
-export function img () {
+function img () {
   return src(`${paths.srcDir}/img/**/*.+(png|jpeg|jpg|svg)`)
     .pipe(imagemin())
     .pipe(dest(`${paths.distDir}/img`))
 }
 
-export function css () {
+function css () {
   return src(`${paths.srcDir}/css/**/*.css`)
     .pipe(cleanCSS())
     .pipe(dest(`${paths.distDir}/css`))
 }
 
-export function generateServiceWorker () {
+function generateServiceWorker () {
   return workbox
     .generateSW({
       globDirectory: `${paths.distDir}`,
@@ -75,7 +73,7 @@ export function generateServiceWorker () {
 }
 
 // service worker
-export function pwajs () {
+function pwajs () {
   return src(`${paths.srcDir}/*.js`)
     .pipe(plumber())
     .pipe(uglify())
@@ -83,28 +81,28 @@ export function pwajs () {
 }
 
 // manifest.json
-export function pwajson () {
+function pwajson () {
   return src(`${paths.srcDir}/manifest.json`)
     .pipe(jsonmin())
     .pipe(dest(paths.distDir))
 }
 
 // webpack
-export function webpackbuild () {
+function webpackbuild () {
   webpackConfig.mode = 'production'
   return webpackStream(webpackConfig, webpack).pipe(
     dest(`${paths.distDir}/js/`)
   )
 }
 
-export function webpackbuilddev () {
+function webpackbuilddev () {
   return webpackStream(webpackConfig, webpack).pipe(
     dest(`${paths.distDir}/js/`)
   )
 }
 
 // watch
-export function wt () {
+function wt () {
   watch('./src/**/*.html', series(html))
   watch('./src/sitemap.xml', series(xml))
   watch('./src/robots.txt', series(robots))
@@ -113,7 +111,7 @@ export function wt () {
   watch('./src/js/**/*.js', series(webpackbuilddev))
 }
 
-export function server () {
+function server () {
   return src(paths.distDir).pipe(
     webserver({
       host: 'localhost',
@@ -124,7 +122,7 @@ export function server () {
   )
 }
 /*
-export function webpackDevServer() {
+function webpackDevServer() {
   new DevServer(webpack(webpackConfig)).listen(8080, 'localhost', (err) => {
     if (err) throw new gutil.PluginError('webpack-dev-server', err);
     gutil.log('[webpack-dev-server]', 'http://localhost:8080/index.html');
