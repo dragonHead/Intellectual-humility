@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   mode: 'development',
@@ -7,14 +7,14 @@ module.exports = {
     openPage: 'index.html',
     contentBase: path.join(__dirname, 'docs'),
     watchContentBase: true,
-    port: 8080,
+    port: 8080
   },
   entry: { app: './src/js/index.js' },
   output: {
     path: path.join(__dirname, 'docs/js'),
     publicPath: '/js/',
     filename: '[name].js',
-    libraryTarget: 'umd',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
@@ -22,10 +22,10 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
+          loader: 'babel-loader'
+        }
+      }
+    ]
   },
-  devtool: 'inline-source-map',
-};
+  devtool: 'inline-source-map'
+}
