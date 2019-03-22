@@ -140,8 +140,7 @@ const build = series(
 
 const prod = series(build, webpackbuild)
 
-const develop = series(build, webpackbuilddev, parallel(wt, server))
+const dev = series(build, webpackbuilddev, parallel(wt, server))
 
-exports.default = build
-exports.dev = develop
-exports.prod = prod
+exports.default = prod
+exports.dev = dev
