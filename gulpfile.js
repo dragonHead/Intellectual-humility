@@ -57,6 +57,7 @@ function js() {
       // .pipe(babel())
       // .pipe(concat(jsfiles.zen, { newLine: "\n\n" }))
       .pipe(uglify())
+      .pipe(gzip())
       .pipe(dest(`${paths.distDir}/resources/js`))
   );
 }
