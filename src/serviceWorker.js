@@ -32,10 +32,6 @@ self.__precacheManifest = [
     "revision": "f9ef6cb756c7d71e4d3e24f8a8525e58"
   },
   {
-    "url": "css/index.css",
-    "revision": "589f053bbac8f9f48c6eb03d77e1fb1f"
-  },
-  {
     "url": "index.html",
     "revision": "d1197e05156108d8f336cdbc6fb1a842"
   },
