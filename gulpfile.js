@@ -21,9 +21,11 @@ const clean = () => del([`${paths.distDir}/**`, "!dist"], { force: true });
 
 // html
 function html() {
-  return src(`${paths.srcDir}/**/*.html`)
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(dest(paths.distDir));
+  return (
+    src(`${paths.srcDir}/**/*.html`)
+      //.pipe(htmlmin({ collapseWhitespace: true }))
+      .pipe(dest(paths.distDir))
+  );
 }
 
 // sitemap.xml
