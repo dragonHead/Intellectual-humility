@@ -45,10 +45,12 @@ function img() {
 }
 
 function css() {
-  return src(`${paths.srcDir}/css/**/*.css`)
-    .pipe(cleanCSS())
-    .pipe(gzip())
-    .pipe(dest(`${paths.distDir}/css`));
+  return (
+    src(`${paths.srcDir}/css/**/*.css`)
+      .pipe(cleanCSS())
+      //.pipe(gzip())
+      .pipe(dest(`${paths.distDir}/css`))
+  );
 }
 
 // js
@@ -59,7 +61,7 @@ function js() {
       // .pipe(babel())
       // .pipe(concat(jsfiles.zen, { newLine: "\n\n" }))
       .pipe(uglify())
-      .pipe(gzip())
+      //.pipe(gzip())
       .pipe(dest(`${paths.distDir}/resources/js`))
   );
 }

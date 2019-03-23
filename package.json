@@ -60,7 +60,6 @@
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
     "gulp-webserver": "^0.9.1",
-    "html-webpack-inline-source-plugin": "0.0.10",
     "mocha": "^5.2.0",
     "prettier": "^1.16.4",
     "puppeteer": "^1.13.0",
