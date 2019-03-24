@@ -25,7 +25,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "0e68b7519400cc6bac075b5296df2477"
+    "revision": "ae83b2c60653544a830876e674772faa"
   },
   {
     "url": "about.html",

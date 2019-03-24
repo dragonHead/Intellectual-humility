@@ -7,7 +7,7 @@ const uglify = require("gulp-uglify");
 const plumber = require("gulp-plumber");
 const jsonmin = require("gulp-jsonminify");
 const gzip = require("gulp-gzip");
-const webserver = require("gulp-webserver");
+const connect = require("gulp-connect");
 const workbox = require("workbox-build");
 const del = require("del");
 
@@ -112,13 +112,12 @@ function wt() {
 }
 
 function server() {
-  return src(paths.distDir).pipe(
-    webserver({
-      host: "localhost",
-      port: "8080",
-      livereload: true
-    })
-  );
+  connect.server({
+    root: paths.distDir,
+    port: "8080",
+    livereload: true,
+    debug: true
+  });
 }
 
 const build = series(
