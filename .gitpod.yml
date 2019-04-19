@@ -1,3 +1,6 @@
+image:
+  file: Dockerfile
+  context: docker
 tasks:
   - init: npm install
     command: npx gulp
