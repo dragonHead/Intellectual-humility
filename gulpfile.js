@@ -21,20 +21,16 @@ const clean = () => del([`${paths.distDir}/**`, "!dist"], { force: true });
 
 // copy
 function copy() {
-  return (
-    src(["node_modules/normalize.css/normalize.css"])
+  return src(["node_modules/normalize.css/normalize.css"])
     .pipe(cleanCSS())
-    .pipe(dest(`${paths.distDir}/css`))
-  );
+    .pipe(dest(`${paths.distDir}/css`));
 }
 
 // html
 function html() {
-  return (
-    src(`${paths.srcDir}/**/*.html`)
-      .pipe(htmlmin({ collapseWhitespace: true }))
-      .pipe(dest(paths.distDir))
-  );
+  return src(`${paths.srcDir}/**/*.html`)
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(dest(paths.distDir));
 }
 
 // sitemap.xml
