@@ -19,11 +19,20 @@ const paths = {
 // clean
 const clean = () => del([`${paths.distDir}/**`, "!dist"], { force: true });
 
+// copy
+function copy() {
+  return (
+    src(["node_modules/normalize.css/normalize.css"])
+    .pipe(cleanCSS())
+    .pipe(dest(`${paths.distDir}/css`))
+  );
+}
+
 // html
 function html() {
   return (
     src(`${paths.srcDir}/**/*.html`)
-      //.pipe(htmlmin({ collapseWhitespace: true }))
+      .pipe(htmlmin({ collapseWhitespace: true }))
       .pipe(dest(paths.distDir))
   );
 }
@@ -122,7 +131,7 @@ function server() {
 
 const build = series(
   clean,
-  parallel(html, robots, xml, pwajson, js, css, img),
+  parallel(copy, html, robots, xml, pwajson, js, css, img),
   generateServiceWorker,
   pwajs
 );
