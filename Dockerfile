@@ -1,4 +1,4 @@
-FROM node:11.14.0
+FROM node:12.1.0
 
 RUN useradd --user-group --create-home --shell /bin/false app
 
