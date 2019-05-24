@@ -29,9 +29,9 @@
   "homepage": "https://github.com/dragonHead/io#readme",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
+    "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "del": "^3.0.0",
     "eslint": "^5.16.0",
@@ -58,8 +58,8 @@
     "gulp-util": "^3.0.8",
     "mocha": "^5.2.0",
     "prettier": "^1.17.0",
-    "puppeteer": "^1.15.0",
-    "puppeteer-core": "^1.15.0",
+    "puppeteer": "^1.17.0",
+    "puppeteer-core": "^1.17.0",
     "retire": "^2.0.3",
     "workbox-build": "^4.3.1"
   },
