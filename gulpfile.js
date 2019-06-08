@@ -6,7 +6,6 @@ const cleanCSS = require("gulp-clean-css");
 const uglify = require("gulp-uglify");
 const plumber = require("gulp-plumber");
 const jsonmin = require("gulp-jsonminify");
-const gzip = require("gulp-gzip");
 const connect = require("gulp-connect");
 const workbox = require("workbox-build");
 const del = require("del");
@@ -50,12 +49,9 @@ function img() {
 }
 
 function css() {
-  return (
-    src(`${paths.srcDir}/css/**/*.css`)
-      .pipe(cleanCSS())
-      //.pipe(gzip())
-      .pipe(dest(`${paths.distDir}/css`))
-  );
+  return src(`${paths.srcDir}/css/**/*.css`)
+    .pipe(cleanCSS())
+    .pipe(dest(`${paths.distDir}/css`));
 }
 
 // js
@@ -63,10 +59,8 @@ function js() {
   return (
     src(`${paths.srcDir}/resources/js/**/*.js`)
       .pipe(plumber())
-      // .pipe(babel())
       // .pipe(concat(jsfiles.zen, { newLine: "\n\n" }))
       .pipe(uglify())
-      //.pipe(gzip())
       .pipe(dest(`${paths.distDir}/resources/js`))
   );
 }
