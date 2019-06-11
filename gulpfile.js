@@ -1,5 +1,4 @@
 const { src, dest, series, parallel, watch } = require("gulp");
-// const gutil = require('gulp-util')
 const htmlmin = require("gulp-htmlmin");
 const imagemin = require("gulp-imagemin");
 const cleanCSS = require("gulp-clean-css");
@@ -56,13 +55,10 @@ function css() {
 
 // js
 function js() {
-  return (
-    src(`${paths.srcDir}/resources/js/**/*.js`)
-      .pipe(plumber())
-      // .pipe(concat(jsfiles.zen, { newLine: "\n\n" }))
-      .pipe(uglify())
-      .pipe(dest(`${paths.distDir}/resources/js`))
-  );
+  return src(`${paths.srcDir}/resources/js/**/*.js`)
+    .pipe(plumber())
+    .pipe(uglify())
+    .pipe(dest(`${paths.distDir}/resources/js`));
 }
 
 function generateServiceWorker() {
