@@ -109,6 +109,7 @@ function wt() {
 function server() {
   connect.server({
     root: paths.distDir,
+    host: "0.0.0.0",
     port: "8080",
     debug: true
   });
