@@ -1,10 +1,10 @@
 version: "3.7"
 services:
-  io:
+  intellectual-humility:
     build: .
     command: bash -c "npx gulp dev"
     ports:
       - "8080:8080"
     volumes:
-      - .:/home/app/io
-      - /home/app/io/node_modules
+      - .:/home/app/intellectual-humility
+      - /home/app/intellectual-humility/node_modules

@@ -1,14 +1,12 @@
 {
-  "name": "io",
+  "name": "Intellectual-humility",
   "version": "1.0.0",
-  "description": "github page / io",
+  "description": "github page / Intellectual-humility",
   "main": "doc/index.html",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot",
-    "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
@@ -19,14 +17,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dragonHead/io.git"
+    "url": "git+https://github.com/dragonHead/Intellectual-humility.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dragonHead/io/issues"
+    "url": "https://github.com/dragonHead/Intellectual-humility/issues"
   },
-  "homepage": "https://github.com/dragonHead/io#readme",
+  "homepage": "https://github.com/dragonHead/Intellectual-humility#readme",
   "devDependencies": {
     "del": "^3.0.0",
     "eslint": "^5.16.0",

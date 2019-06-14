@@ -110,7 +110,6 @@ function server() {
   connect.server({
     root: paths.distDir,
     port: "8080",
-    livereload: true,
     debug: true
   });
 }

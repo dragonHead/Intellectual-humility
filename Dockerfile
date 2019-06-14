@@ -4,16 +4,16 @@ RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
 
-COPY package.json $HOME/io/
+COPY package.json $HOME/intellectual-humility/
 RUN chown -R app:app $HOME/*
 
 USER root
-COPY . $HOME/io
+COPY . $HOME/intellectual-humility
 RUN chown -R app:app $HOME/*
 
 USER app
-WORKDIR $HOME/io
+WORKDIR $HOME/intellectual-humility
 RUN npm install --no-optional --no-shrinkwrap --no-package-lock
 
-# docker-compose exec io /bin/bash
-# docker-compose run io /bin/bash
+# docker-compose exec intellectual-humility /bin/bash
+# docker-compose run intellectual-humility /bin/bash
