@@ -1,9 +1,9 @@
-image:
-  file: Dockerfile
-  context: docker
-tasks:
-  - init: npm install
-    command: npx gulp dev
-ports:
-  - port: 8080
-    onOpen: open-preview
+#image:
+#  file: Dockerfile
+#  context: docker
+#tasks:
+#  - init: npm install
+#    command: npx gulp dev
+#ports:
+#  - port: 8080
+#    onOpen: open-preview
