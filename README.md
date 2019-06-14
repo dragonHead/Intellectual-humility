@@ -1,3 +1,3 @@
 # Intellectual-humility
 
-[![Build Status](https://travis-ci.org/dragonHead/io.svg?branch=master)](https://travis-ci.org/dragonHead/io)
+[![Build Status](https://travis-ci.org/dragonHead/Intellectual-humility.svg?branch=master)](https://travis-ci.org/dragonHead/Intellectual-humility)
