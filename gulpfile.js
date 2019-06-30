@@ -1,6 +1,6 @@
 const { src, dest, series, parallel, watch } = require("gulp");
 const htmlmin = require("gulp-htmlmin");
-const imagemin = require("gulp-imagemin");
+const image = require('gulp-image');
 const cleanCSS = require("gulp-clean-css");
 const uglify = require("gulp-uglify");
 const plumber = require("gulp-plumber");
@@ -13,6 +13,18 @@ const paths = {
   srcDir: "./src",
   distDir: "./docs"
 };
+
+const imageOption = {
+  pngquant:       true,
+  optipng:        true,
+  zopflipng:      false, // 別途実施
+  advpng:         true,
+  jpegRecompress: true,
+  jpegoptim:      true,
+  mozjpeg:        true,
+  gifsicle:       true,
+  svgo:           true,
+}
 
 // clean
 const clean = () => del([`${paths.distDir}/**`, "!dist"], { force: true });
@@ -43,7 +55,7 @@ function robots() {
 
 function img() {
   return src(`${paths.srcDir}/img/**/*.+(png|jpeg|jpg|svg)`)
-    .pipe(imagemin())
+    .pipe(image(imageOption))
     .pipe(dest(`${paths.distDir}/img`));
 }
 
