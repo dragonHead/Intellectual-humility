@@ -38,7 +38,6 @@
     "gulp-connect": "^5.7.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-image": "^5.1.0",
-    "gulp-inline-source": "^4.0.0",
     "gulp-jsonminify": "^1.1.0",
     "gulp-plumber": "^1.2.1",
     "gulp-uglify": "^3.0.2",
