@@ -4,4 +4,4 @@ node_js:
 matrix:
   include:
     - os: osx
-osx_image: xcode10.2
+osx_image: xcode10.3
