@@ -1,5 +1,8 @@
 FROM node:13.2.0
 
+RUN apt-get update
+RUN apt-get -y install vim
+
 RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
