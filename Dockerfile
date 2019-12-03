@@ -1,4 +1,4 @@
-FROM node:13.2.0
+FROM node:12.13.1
 
 RUN apt-get update
 RUN apt-get -y install vim
