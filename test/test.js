@@ -17,5 +17,5 @@ const args = [
   await page.setViewport({ width, height })
   await page.goto('https://www.google.co.jp/')
   await page.screenshot({ path: 'test/puppeteer/screenshot/example.png' })
-  browser.close()
+  await browser.close()
 })()
