@@ -6,7 +6,7 @@ RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
 
-RUN ls -la /workspace/init/
+RUN pwd
 COPY . $HOME/intellectual-humility
 RUN chown -R app:app $HOME/*
 
