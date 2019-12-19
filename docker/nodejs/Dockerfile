@@ -1,16 +1,12 @@
 FROM node:12.14.0
 
-RUN apt-get update
-#RUN apt-get -y install vim
+RUN apt-get update \
+    && apt-get -y install vim
 
 RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
 
-COPY package.json $HOME/intellectual-humility/
-RUN chown -R app:app $HOME/*
-
-USER root
 COPY . $HOME/intellectual-humility
 RUN chown -R app:app $HOME/*
 
