@@ -11,4 +11,5 @@ RUN chown -R app:app $HOME/*
 
 USER app
 WORKDIR $HOME/intellectual-humility
+RUN ls -la
 RUN npm install
