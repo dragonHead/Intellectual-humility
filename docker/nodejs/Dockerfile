@@ -7,6 +7,10 @@ RUN useradd --user-group --create-home --shell /bin/false app
 
 ENV HOME=/home/app
 
+COPY package.json $HOME/intellectual-humility/
+RUN chown -R app:app $HOME/*
+
+USER root
 COPY . $HOME/intellectual-humility
 RUN chown -R app:app $HOME/*
 

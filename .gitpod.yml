@@ -2,8 +2,7 @@ image:
   file: docker/nodejs/Dockerfile
   context: docker
 tasks:
-  - init: npm install
-    command: npx gulp dev
+  - command: npx gulp dev
 ports:
   - port: 8080
     onOpen: open-preview
