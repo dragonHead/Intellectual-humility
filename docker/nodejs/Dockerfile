@@ -1,7 +1,7 @@
 FROM node:12.14.0
 
 RUN apt-get update
-RUN apt-get -y install vim
+#RUN apt-get -y install vim
 
 RUN useradd --user-group --create-home --shell /bin/false app
 
