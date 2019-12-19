@@ -1,7 +1,9 @@
 version: "3.7"
 services:
   intellectual-humility:
-    build: .
+    build:
+        context: .
+        dockerfile: ./docker/nodejs/Dockerfile
     command: bash -c "npx gulp dev"
     ports:
       - "8080:8080"

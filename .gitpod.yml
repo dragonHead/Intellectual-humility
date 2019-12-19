@@ -1,5 +1,5 @@
 image:
-  file: Dockerfile
+  file: docker/nodejs/Dockerfile
   context: docker
 tasks:
   - init: npm install
