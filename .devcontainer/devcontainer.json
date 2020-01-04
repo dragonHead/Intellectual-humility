@@ -1,0 +1,13 @@
+{
+    "name": "Existing Docker Compose (Extend)",
+    "dockerComposeFile": [
+      "../docker-compose.yml"
+    ],
+    "service": "intellectual-humility",
+    "workspaceFolder": "/home/app/intellectual-humility",
+    "extensions": [
+      "firefox-devtools.vscode-firefox-debug",
+      "msjsdiag.debugger-for-chrome",
+      "msjsdiag.debugger-for-edge"
+    ]
+}
