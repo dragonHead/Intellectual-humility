@@ -8,6 +8,8 @@
     "extensions": [
       "firefox-devtools.vscode-firefox-debug",
       "msjsdiag.debugger-for-chrome",
-      "msjsdiag.debugger-for-edge"
+      "msjsdiag.debugger-for-edge",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint"
     ]
 }

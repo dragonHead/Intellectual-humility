@@ -1,4 +1,4 @@
-FROM node:12.14.1
+FROM node:latest
 
 RUN apt-get update && apt-get install -y \
     vim tmux

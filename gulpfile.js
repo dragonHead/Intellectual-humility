@@ -129,7 +129,7 @@ function server() {
 
 const build = series(
   clean,
-  parallel(copy, html, robots, xml, pwajson, js, css, img),
+  parallel(html, robots, xml, pwajson, js, css),
   generateServiceWorker,
   pwajs
 );
