@@ -1,1 +1,0 @@
-@charset "UTF-8";.container{display:grid;min-height:100vh;grid-template-rows:70px 1fr}.header{grid-row:1;background:#000;color:#fff;border:1px solid #000}.title{font-size:1.5rem;margin-left:10px}.main{grid-row:2;grid-column:4}.panel-layout{display:grid;grid-template-columns:200px 200px 200px 200px;grid-template-rows:100px 100px}

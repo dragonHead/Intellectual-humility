@@ -1,8 +1,9 @@
-FROM node:12.15.0
+FROM node:13.8.0-slim
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && apt-get install -y \
+    --no-install-recommends \
     vim tmux
-
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 RUN useradd --user-group --create-home --shell /bin/false app

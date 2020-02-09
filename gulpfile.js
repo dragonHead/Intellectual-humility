@@ -2,12 +2,16 @@ const { src, dest, series, parallel, watch } = require("gulp");
 const htmlmin = require("gulp-htmlmin");
 const image = require('gulp-image');
 const cleanCSS = require("gulp-clean-css");
-const uglify = require("gulp-uglify");
+const concat = require('gulp-concat');
 const plumber = require("gulp-plumber");
 const jsonmin = require("gulp-jsonminify");
 const connect = require("gulp-connect");
 const workbox = require("workbox-build");
 const del = require("del");
+
+const webpackStream = require("webpack-stream");
+const webpack = require("webpack");
+const webpackConfig = require("./webpack.config");
 
 const paths = {
   srcDir: "./src",
@@ -17,7 +21,7 @@ const paths = {
 const imageOption = {
   pngquant:       true,
   optipng:        true,
-  zopflipng:      false, // 別途実施
+  zopflipng:      false,
   advpng:         true,
   jpegRecompress: true,
   jpegoptim:      true,
@@ -30,11 +34,11 @@ const imageOption = {
 const clean = () => del([`${paths.distDir}/**`, "!dist"], { force: true });
 
 // copy
-function copy() {
-  return src(["node_modules/normalize.css/normalize.css"])
-    .pipe(cleanCSS())
-    .pipe(dest(`${paths.distDir}/css`));
-}
+// function copy() {
+//   return src(["node_modules/normalize.css/normalize.css"])
+//     .pipe(cleanCSS())
+//     .pipe(dest(`${paths.distDir}/css`));
+// }
 
 // html
 function html() {
@@ -62,15 +66,14 @@ function img() {
 function css() {
   return src(`${paths.srcDir}/css/**/*.css`)
     .pipe(cleanCSS())
+    .pipe(concat('app.css'))
     .pipe(dest(`${paths.distDir}/css`));
 }
 
 // js
 function js() {
-  return src(`${paths.srcDir}/resources/js/**/*.js`)
-    .pipe(plumber())
-    .pipe(uglify())
-    .pipe(dest(`${paths.distDir}/resources/js`));
+  return webpackStream(webpackConfig, webpack)
+    .pipe(dest(`${paths.distDir}/js`));
 }
 
 function generateServiceWorker() {
@@ -97,7 +100,7 @@ function generateServiceWorker() {
 function pwajs() {
   return src(`${paths.srcDir}/*.js`)
     .pipe(plumber())
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(dest(paths.distDir));
 }
 
