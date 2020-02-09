@@ -10,7 +10,7 @@
   "theme_color": "#fff",
   "description": "",
   "serviceworker": {
-    "src": "serviceWorker.js",
+    "src": "js/serviceWorker.js",
     "scope": "/"
   },
   "icons": [{

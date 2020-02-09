@@ -2,10 +2,7 @@
   "name": "intellectual-humility",
   "version": "1.0.0",
   "description": "github page / Intellectual-humility",
-  "main": "doc/index.html",
-  "directories": {
-    "doc": "docs"
-  },
+  "main": "docs/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "lint:fix": "eslint . --fix",
@@ -49,9 +46,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-webp": "^4.0.1",
     "prettier": "^1.19.1",
-    "puppeteer": "^2.1.1",
-    "puppeteer-core": "^2.1.1",
-    "puppeteer-firefox": "^0.5.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.3",
