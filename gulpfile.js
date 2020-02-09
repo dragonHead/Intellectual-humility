@@ -1,17 +1,18 @@
 const { src, dest, series, parallel, watch } = require("gulp");
 const htmlmin = require("gulp-htmlmin");
-const image = require('gulp-image');
 const cleanCSS = require("gulp-clean-css");
 const concat = require('gulp-concat');
+const image = require('gulp-image');
+const webp = require('gulp-webp');
+const webpackStream = require("webpack-stream");
+const webpack = require("webpack");
+const webpackDevConfig = require("./webpack.dev.js");
+const webpackProdConfig = require("./webpack.prod.js");
 const plumber = require("gulp-plumber");
 const jsonmin = require("gulp-jsonminify");
 const connect = require("gulp-connect");
 const workbox = require("workbox-build");
 const del = require("del");
-
-const webpackStream = require("webpack-stream");
-const webpack = require("webpack");
-const webpackConfig = require("./webpack.config");
 
 const paths = {
   srcDir: "./src",
@@ -60,6 +61,7 @@ function robots() {
 function img() {
   return src(`${paths.srcDir}/img/**/*.+(png|jpeg|jpg|svg)`)
     .pipe(image(imageOption))
+    // .pipe(webp())
     .pipe(dest(`${paths.distDir}/img`));
 }
 
@@ -71,37 +73,14 @@ function css() {
 }
 
 // js
-function js() {
-  return webpackStream(webpackConfig, webpack)
+function devjs() {
+  return webpackStream(webpackDevConfig, webpack)
     .pipe(dest(`${paths.distDir}/js`));
 }
 
-function generateServiceWorker() {
-  return workbox
-    .generateSW({
-      globDirectory: `${paths.distDir}`,
-      globPatterns: ["**/*.{html,css,js}"],
-      swDest: `${paths.srcDir}/serviceWorker.js`,
-      clientsClaim: true,
-      skipWaiting: true
-    })
-    .then(({ warnings }) => {
-      for (const warning of warnings) {
-        console.warn(warning);
-      }
-      console.info("Service worker generation completed.");
-    })
-    .catch(error => {
-      console.warn("Service worker generation failed:", error);
-    });
-}
-
-// service worker
-function pwajs() {
-  return src(`${paths.srcDir}/*.js`)
-    .pipe(plumber())
-    // .pipe(uglify())
-    .pipe(dest(paths.distDir));
+function prodjs() {
+  return webpackStream(webpackProdConfig, webpack)
+    .pipe(dest(`${paths.distDir}/js`));
 }
 
 // manifest.json
@@ -118,7 +97,7 @@ function wt() {
   watch("./src/robots.txt", series(robots));
   watch("./src/manifest.json", series(pwajson));
   watch("./src/css/**/*.css", series(css));
-  watch("./src/js/**/*.js", series(js));
+  watch("./src/js/**/*.js", series(devjs));
 }
 
 function server() {
@@ -130,16 +109,18 @@ function server() {
   });
 }
 
-const build = series(
+const devbuild = series(
   clean,
-  parallel(html, robots, xml, pwajson, js, css),
-  generateServiceWorker,
-  pwajs
+  parallel(html, robots, xml, img, pwajson, devjs, css),
 );
 
-const prod = series(build);
+const prodbuild = series(
+  clean,
+  parallel(html, robots, xml, img, pwajson, prodjs, css),
+);
 
-const dev = series(build, parallel(wt, server));
+const prod = series(prodbuild);
+const dev = series(devbuild, parallel(wt, server));
 
 exports.default = prod;
 exports.dev = dev;
