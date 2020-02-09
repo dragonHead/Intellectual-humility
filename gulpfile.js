@@ -8,10 +8,8 @@ const webpackStream = require("webpack-stream");
 const webpack = require("webpack");
 const webpackDevConfig = require("./webpack.dev.js");
 const webpackProdConfig = require("./webpack.prod.js");
-const plumber = require("gulp-plumber");
 const jsonmin = require("gulp-jsonminify");
 const connect = require("gulp-connect");
-const workbox = require("workbox-build");
 const del = require("del");
 
 const paths = {
@@ -61,7 +59,7 @@ function robots() {
 function img() {
   return src(`${paths.srcDir}/img/**/*.+(png|jpeg|jpg|svg)`)
     .pipe(image(imageOption))
-    // .pipe(webp())
+    .pipe(webp())
     .pipe(dest(`${paths.distDir}/img`));
 }
 
@@ -97,7 +95,7 @@ function wt() {
   watch("./src/robots.txt", series(robots));
   watch("./src/manifest.json", series(pwajson));
   watch("./src/css/**/*.css", series(css));
-  watch("./src/js/**/*.js", series(devjs));
+  // watch("./src/js/**/*.js", series(devjs));
 }
 
 function server() {
@@ -111,12 +109,28 @@ function server() {
 
 const devbuild = series(
   clean,
-  parallel(html, robots, xml, img, pwajson, devjs, css),
+  parallel(
+    html
+    ,robots
+    ,xml
+    ,img
+    // ,pwajson
+    ,devjs
+    ,css
+  ),
 );
 
 const prodbuild = series(
   clean,
-  parallel(html, robots, xml, img, pwajson, prodjs, css),
+  parallel(
+    html
+    ,robots
+    ,xml
+    ,img
+    // ,pwajson
+    ,prodjs
+    ,css
+  ),
 );
 
 const prod = series(prodbuild);

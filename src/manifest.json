@@ -3,19 +3,15 @@
   "dir": "ltr",
   "name": "Intellectual-humility",
   "short_name": "Intellectual-humility",
-  "start_url": "/Intellectual-humility/",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
   "theme_color": "#fff",
   "description": "",
-  "serviceworker": {
-    "src": "js/serviceWorker.js",
-    "scope": "/"
-  },
   "icons": [{
-      "src": "img/icon/i.png",
-      "type": "image/png",
+      "src": "img/icon/i.webp",
+      "type": "image/webp",
       "sizes": "192x192"
     }]
 }

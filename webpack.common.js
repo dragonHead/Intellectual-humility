@@ -1,5 +1,5 @@
 const path = require('path');
-const {GenerateSW} = require('workbox-webpack-plugin');
+// const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -10,11 +10,11 @@ module.exports = {
       path: path.resolve(__dirname, 'docs'),
     },
     plugins: [
-        new GenerateSW({
-          swDest: 'serviceWorker.js',
-          clientsClaim: true,
-          skipWaiting: true,
-        }),
+        // new GenerateSW({
+        //   swDest: 'serviceWorker.js',
+        //   clientsClaim: true,
+        //   skipWaiting: true,
+        // }),
     ],
     module: {
       rules: [
