@@ -1,20 +1,20 @@
 const path = require('path');
-// const {GenerateSW} = require('workbox-webpack-plugin');
+const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: {
         app: `./src/js/app.js`,
     },
     output: {
-      filename: "[name].js",
-      path: path.resolve(__dirname, 'docs'),
+      filename: "js/[name].js",
+      // path: path.resolve(__dirname + '/docs'),
     },
     plugins: [
-        // new GenerateSW({
-        //   swDest: 'serviceWorker.js',
-        //   clientsClaim: true,
-        //   skipWaiting: true,
-        // }),
+        new GenerateSW({
+          swDest: 'serviceWorker.js',
+          clientsClaim: true,
+          skipWaiting: true,
+        }),
     ],
     module: {
       rules: [

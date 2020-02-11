@@ -66,12 +66,12 @@ function css() {
 // js
 function devjs() {
   return webpackStream(webpackDevConfig, webpack)
-    .pipe(dest(`${paths.distDir}/js`));
+    .pipe(dest(`${paths.distDir}`));
 }
 
 function prodjs() {
   return webpackStream(webpackProdConfig, webpack)
-    .pipe(dest(`${paths.distDir}/js`));
+    .pipe(dest(`${paths.distDir}`));
 }
 
 // manifest.json
@@ -88,7 +88,7 @@ function wt() {
   watch("./src/robots.txt", series(robots));
   watch("./src/manifest.json", series(pwajson));
   watch("./src/css/**/*.css", series(css));
-  // watch("./src/js/**/*.js", series(devjs));
+  watch("./src/js/**/*.js", series(devjs));
 }
 
 function server() {
@@ -107,7 +107,7 @@ const devbuild = series(
     ,robots
     ,xml
     ,img
-    // ,pwajson
+    ,pwajson
     ,devjs
     ,css
   ),
@@ -120,7 +120,7 @@ const prodbuild = series(
     ,robots
     ,xml
     ,img
-    // ,pwajson
+    ,pwajson
     ,prodjs
     ,css
   ),
