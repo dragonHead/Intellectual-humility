@@ -1,4 +1,4 @@
 module.exports = {
-    tabWidth: 2,
-    trailingComma: 'es6',
-  };
+  tabWidth: 2,
+  trailingComma: 'es6',
+};

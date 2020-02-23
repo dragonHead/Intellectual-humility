@@ -1,10 +1,13 @@
 version: "3"
 services:
   intellectual-humility:
+    container_name: ${CONTAINER_NAME}
     build:
         context: .
         dockerfile: ./docker/nodejs/Dockerfile
     command: bash -c "npx gulp dev"
+    environment:
+      NODE_ENV: ${NODE_ENV}
     ports:
       - "8080:8080"
     volumes:
