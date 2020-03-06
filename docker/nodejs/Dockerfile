@@ -1,4 +1,4 @@
-FROM node:13.8.0
+FROM node:13.10.1
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends vim tmux \
