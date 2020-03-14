@@ -1,7 +1,7 @@
 FROM node:13.10.1
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends vim tmux \
+  && apt-get install -y --no-install-recommends vim tmux git \
   && apt-get clean
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
