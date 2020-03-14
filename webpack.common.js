@@ -11,9 +11,9 @@ module.exports = {
     },
     plugins: [
         new GenerateSW({
-          include: [/\.(?:html|css|js|webp)$/],
+          include: [/\.(?:html|css|js|png)$/],
           runtimeCaching: [{
-            urlPattern: /\.(?:html|css|js|webp)$/,
+            urlPattern: /\.(?:html|css|js|png)$/,
             handler: 'CacheFirst',
           }],
           swDest: 'serviceWorker.js',

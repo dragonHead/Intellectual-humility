@@ -10,8 +10,8 @@
   "theme_color": "#fff",
   "description": "",
   "icons": [{
-      "src": "img/icon/i.webp",
-      "type": "image/webp",
+      "src": "img/icon/i.png",
+      "type": "image/png",
       "sizes": "192x192"
     }]
 }

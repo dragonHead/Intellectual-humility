@@ -2,8 +2,6 @@ const { src, dest, series, parallel, watch } = require("gulp");
 const htmlmin = require("gulp-htmlmin");
 const cleanCSS = require("gulp-clean-css");
 const concat = require('gulp-concat');
-const image = require('gulp-image');
-const webp = require('gulp-webp');
 const webpackStream = require("webpack-stream");
 const webpack = require("webpack");
 const webpackDevConfig = require("./webpack.dev.js");
@@ -16,18 +14,6 @@ const paths = {
   srcDir: "./src",
   distDir: "./docs"
 };
-
-const imageOption = {
-  pngquant:       true,
-  optipng:        true,
-  zopflipng:      false,
-  advpng:         true,
-  jpegRecompress: true,
-  jpegoptim:      true,
-  mozjpeg:        true,
-  gifsicle:       true,
-  svgo:           true,
-}
 
 // clean
 const clean = () => del([`${paths.distDir}/**`, "!dist"], { force: true });
@@ -51,8 +37,6 @@ function robots() {
 
 function img() {
   return src(`${paths.srcDir}/img/**/*.+(png|jpeg|jpg|svg)`)
-    .pipe(image(imageOption))
-    .pipe(webp())
     .pipe(dest(`${paths.distDir}/img`));
 }
 
