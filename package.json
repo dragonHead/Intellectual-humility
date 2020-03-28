@@ -42,16 +42,16 @@
     "gulp-connect": "^5.7.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-jsonminify": "^1.1.0",
-    "npm-check-updates": "^4.0.5",
+    "npm-check-updates": "^4.1.0",
     "prettier": "^2.0.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2",
     "webpack-stream": "^5.2.1",
-    "workbox-build": "^5.1.1",
-    "workbox-sw": "^5.1.1",
-    "workbox-webpack-plugin": "^5.1.1"
+    "workbox-build": "^5.1.2",
+    "workbox-sw": "^5.1.2",
+    "workbox-webpack-plugin": "^5.1.2"
   },
   "dependencies": {},
   "private": true

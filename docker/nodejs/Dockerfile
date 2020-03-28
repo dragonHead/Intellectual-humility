@@ -1,4 +1,4 @@
-FROM node:13.10.1
+FROM node:13.12.0-buster-slim
 
 LABEL vuelearn.version="1.0"
 LABEL vuelearn.description="intellectual humlity"
