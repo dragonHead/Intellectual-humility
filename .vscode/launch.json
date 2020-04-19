@@ -1,35 +1,33 @@
 {
-    // IntelliSense を使用して利用可能な属性を学べます。
-    // 既存の属性の説明をホバーして表示します。
-    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
+    "version": "1.0.0",
     "configurations": [
+
         {
-            "name": "Launch index.html",
-            "type": "firefox",
-            "request": "launch",
-            "reAttach": true,
-            "file": "${workspaceFolder}/index.html"
-        },
-        {
-            "name": "Launch localhost",
-            "type": "firefox",
-            "request": "launch",
-            "reAttach": true,
-            "url": "http://localhost:8080/index.html",
+            "name": "Attach to Chrome",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
             "webRoot": "${workspaceFolder}"
         },
         {
-            "name": "Attach",
-            "type": "firefox",
-            "request": "attach"
+            "name": "Launch Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
         },
         {
-            "name": "Launch WebExtension",
+            "name": "Launch firefox",
             "type": "firefox",
             "request": "launch",
             "reAttach": true,
-            "addonPath": "${workspaceFolder}"
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach to firefox",
+            "type": "firefox",
+            "request": "attach"
         }
     ]
 }
