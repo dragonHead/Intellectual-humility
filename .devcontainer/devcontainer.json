@@ -10,6 +10,15 @@
       "msjsdiag.debugger-for-chrome",
       "msjsdiag.debugger-for-edge",
       "esbenp.prettier-vscode",
-      "dbaeumer.vscode-eslint"
+      "dbaeumer.vscode-eslint",
+      "eg2.vscode-npm-script",
+      "christian-kohler.npm-intellisense",
+      "hex-ci.stylelint-plus",
+      "davidanson.vscode-markdownlint",
+      "chrmarti.regex",
+      "hristian-kohler.path-intellisense",
+      "naumovs.color-highlight",
+      "formulahendry.auto-rename-tag",
+      "christian-kohler.path-intellisense"
     ]
 }

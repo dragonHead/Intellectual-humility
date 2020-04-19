@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>indexedDB sample</title></head><body><script>if (window.indexedDB) {
+  const INDEXEDDB_VERSION = 1;
+  let openRequest = window.indexedDB.open(
+    'sample_store',
+    INDEXEDDB_VERSION
+  );
+
+  // クライアントがデータベースを持っていない場合にトリガーされる。
+  openRequest.addEventListener('upgradeneeded', function(e){
+    let db = e.target.result;
+    console.log("バージョン", db.version);
+  });
+  openRequest.addEventListener('error', function(e){
+    console.log("Database error:", e.target.errorCode);
+  });
+  openRequest.addEventListener('success', function(e){
+    console.log("success");
+  })
+}</script></body></html>
