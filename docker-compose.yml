@@ -9,7 +9,7 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV}
     ports:
-      - "8080:8080"
+      - "8088:8080"
     volumes:
       - .:/home/app/intellectual-humility
       - /home/app/intellectual-humility/node_modules
