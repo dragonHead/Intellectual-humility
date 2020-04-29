@@ -19,6 +19,10 @@
       "hristian-kohler.path-intellisense",
       "naumovs.color-highlight",
       "formulahendry.auto-rename-tag",
-      "christian-kohler.path-intellisense"
+      "christian-kohler.path-intellisense",
+      "mikestead.dotenv",
+      "incaslt.highlight-matching-tag",
+      "coenraads.bracket-pair-colorizer-2",
+      "formulahendry.auto-close-tag"
     ]
 }

@@ -1,19 +1,83 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>indexedDB sample</title></head><body><script>if (window.indexedDB) {
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>indexedDB sample</title></head><body><script>const customerData = [
+  {name: "Bill",age: 35,email: "bill@company.com",},
+  {name: "Donna",age: 32,email: "donna@home.org",},
+];
+if (window.indexedDB) {
   const INDEXEDDB_VERSION = 1;
-  let openRequest = window.indexedDB.open(
-    'sample_store',
+  const openRequest = window.indexedDB.open(
+    'sample_db',
     INDEXEDDB_VERSION
   );
 
-  // クライアントがデータベースを持っていない場合にトリガーされる。
+  // クライアントがデータベースを持っていない場合にトリガーされます
+  // 既存のデータベースのバージョンをチェックし、必要なら更新する:
   openRequest.addEventListener('upgradeneeded', function(e){
-    let db = e.target.result;
-    console.log("バージョン", db.version);
+    const db = e.target.result;
+    console.debug("バージョン", db.version);
+    if (!db.objectStoreNames.contains("sample_store")) {
+      const objStore = db.createObjectStore("sample_store", { autoIncrement : true });
+
+      // index作成
+      objStore.createIndex("name", "name", {
+        unique: true,
+      });
+      objStore.createIndex("email", "email", {
+        unique: true,
+      });
+
+      // データを追加する前に objectStore の作成を完了させるため、
+      // transaction oncomplete を使用します。
+      objStore.transaction.oncomplete = function (event) {
+          // 新たに作成した objectStore に値を保存します。(初期データ)
+          const sampleStore = db.transaction("sample_store", "readwrite").objectStore("sample_store");
+          for (var i in customerData) {
+            sampleStore.add(customerData[i]);
+          }
+      };
+    }
   });
   openRequest.addEventListener('error', function(e){
-    console.log("Database error:", e.target.errorCode);
+    console.debug("Database error:", e.target.errorCode);
   });
   openRequest.addEventListener('success', function(e){
-    console.log("success");
+    console.debug("Database open success");
+
+    // db オブジェクトを仕様してデータベースを操作します
+    const db = e.target.result;
+
+    // 第2引数の指定がない場合は、readonly
+    const transaction = db.transaction(["sample_store"], "readwrite");
+    const objStore = transaction.objectStore("sample_store");
+
+    // select(カーソル)
+    const sampleStoreAll = objStore.openCursor();
+    sampleStoreAll.onsuccess = function(e) {
+      const cursor = e.target.result;
+      // delete
+      if (cursor) {
+        const request = objStore.delete(cursor.key);
+        request.onsuccess = function (event) {
+          cursor.continue();
+          console.log("delete add success");
+        };
+        request.onerror = function (event) {
+          console.log(event.target);
+        };
+      } else {
+        // create
+        for (let i in customerData) {
+          const request = objStore.add(customerData[i]);
+          request.onsuccess = function (event) {
+            console.log("data add success");
+          };
+          request.onerror = function (event) {
+            console.log(event.target);
+          };
+        }
+      }
+    }
+
+
+
   })
 }</script></body></html>
