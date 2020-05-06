@@ -6,6 +6,17 @@
   <title>indexedDB sample</title>
 </head>
 <body>
+  <div>
+    <div><input type="text" id="name" value=""></div>
+    <div><input type="email" id="mailaddress" value=""></div>
+    <div><input type="number" id="age" min="0" value=""></div>
+    <div><input type="button" value="保存"></div>
+  </div>
+
+  <div>
+
+
+  </div>
 <script>
 const customerData = [
   {name: "Bill",age: 35,email: "bill@company.com",},
@@ -85,6 +96,7 @@ if (window.indexedDB) {
         }
       }
     }
+
 
 
 
