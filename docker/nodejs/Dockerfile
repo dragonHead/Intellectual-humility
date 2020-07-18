@@ -4,7 +4,7 @@ LABEL vuelearn.version="1.0"
 LABEL vuelearn.description="intellectual humlity"
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends git locales locales-all \
+  && apt-get install -y --no-install-recommends git locales locales-all vim tmux \
   && apt-get clean
 
 RUN localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8
