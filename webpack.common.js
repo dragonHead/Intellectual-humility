@@ -7,7 +7,7 @@ module.exports = {
     },
     output: {
       filename: "js/[name].js",
-      // path: path.resolve(__dirname + '/docs'),
+      path: path.resolve(__dirname + '/docs'),
     },
     plugins: [
         new GenerateSW({
@@ -25,6 +25,7 @@ module.exports = {
       rules: [
         {
           test: /\.js$/,
+          exclude: /node_modules/,
           use: [
             {
               loader: 'babel-loader',
