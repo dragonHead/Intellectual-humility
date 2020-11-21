@@ -5,7 +5,7 @@ services:
     build:
         context: .
         dockerfile: ./docker/nodejs/Dockerfile
-    command: bash -c "npx gulp dev"
+          #    command: bash -c "npx gulp dev"
     environment:
       NODE_ENV: ${NODE_ENV}
     ports:
