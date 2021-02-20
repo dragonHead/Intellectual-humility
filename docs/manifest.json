@@ -1,1 +1,17 @@
-{"lang":"ja","dir":"ltr","name":"Intellectual-humility","short_name":"Intellectual-humility","start_url":"index.html","display":"standalone","orientation":"portrait","background_color":"#fff","theme_color":"#fff","description":"","icons":[{"src":"img/icon/i.png","type":"image/png","sizes":"192x192"}]}
+{
+  "lang": "ja",
+  "dir": "ltr",
+  "name": "Intellectual-humility",
+  "short_name": "Intellectual-humility",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "description": "",
+  "icons": [{
+      "src": "img/icon/i.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }]
+}

@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import './base.css';
+
 .container {
   display: grid;
   grid-template-rows: 60px 1fr;

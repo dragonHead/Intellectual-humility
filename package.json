@@ -4,7 +4,9 @@
   "description": "github page / Intellectual-humility",
   "main": "docs/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "start": "snowpack dev",
+    "build": "snowpack build"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,8 @@
   },
   "homepage": "https://github.com/dragonHead/Intellectual-humility#readme",
   "devDependencies": {
-    "npm-check-updates": "^10.2.2"
+    "npm-check-updates": "^11.1.4",
+    "snowpack": "^3.0.11"
   },
   "dependencies": {},
   "private": true

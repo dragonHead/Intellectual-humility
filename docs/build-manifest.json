@@ -1,0 +1,57 @@
+{
+  "inputs": {
+    "css/base.css": {
+      "bytes": 246,
+      "imports": []
+    },
+    "css/app.css": {
+      "bytes": 804,
+      "imports": [
+        {
+          "path": "css/base.css",
+          "kind": "import-rule"
+        }
+      ]
+    },
+    "js/sub.js": {
+      "bytes": 51,
+      "imports": []
+    },
+    "js/app.js": {
+      "bytes": 43,
+      "imports": [
+        {
+          "path": "js/sub.js",
+          "kind": "import-statement"
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "../~~bundle~~/css/app.css": {
+      "imports": [],
+      "inputs": {
+        "css/base.css": {
+          "bytesInOutput": 185
+        },
+        "css/app.css": {
+          "bytesInOutput": 570
+        }
+      },
+      "bytes": 773
+    },
+    "../~~bundle~~/js/app.js": {
+      "imports": [],
+      "exports": [],
+      "inputs": {
+        "js/sub.js": {
+          "bytesInOutput": 34
+        },
+        "js/app.js": {
+          "bytesInOutput": 4
+        }
+      },
+      "bytes": 39
+    }
+  }
+}
