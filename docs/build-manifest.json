@@ -25,6 +25,10 @@
           "kind": "import-statement"
         }
       ]
+    },
+    "js/webcomponents/sample1.js": {
+      "bytes": 1280,
+      "imports": []
     }
   },
   "outputs": {
@@ -52,6 +56,16 @@
         }
       },
       "bytes": 39
+    },
+    "../~~bundle~~/js/webcomponents/sample1.js": {
+      "imports": [],
+      "exports": [],
+      "inputs": {
+        "js/webcomponents/sample1.js": {
+          "bytesInOutput": 640
+        }
+      },
+      "bytes": 641
     }
   }
 }
