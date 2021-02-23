@@ -1,17 +1,15 @@
-class SampleElement extends HTMLElement {
-    constructor() {
-        super();
-
-        const template = document.createElement('template');
-        template.innerHTML = `
+const template = document.createElement('template');
+template.innerHTML = `
 <style>
 p {
-    font-weight: bold;
+font-weight: bold;
 }
 </style>
 <p>Sample Cstom Element!</p>
 `;
-
+export class SampleElement extends HTMLElement {
+    constructor() {
+        super();
         const shadowRoot = this.attachShadow({mode: 'open'});
         shadowRoot.appendChild(template.content.cloneNode(true));
 
@@ -43,5 +41,3 @@ p {
         console.debug(`adoptedCallback ${oldDocument}->${newDocument}`);
     }
 }
-
-customElements.define('i-sample', SampleElement);
