@@ -19,7 +19,7 @@ export class ItemElement extends HTMLElement {
         this._root.appendChild(template.content.cloneNode(true));
         this.$item = this._root.querySelector('.item');
         this.$text = this._root.querySelector('label');
-        this.$removeButton = this._root.querySelector('.destory');
+        this.$removeButton = this._root.querySelector('.destroy');
         this.$checkbox = this._root.querySelector('input');
 
         this.$removeButton.addEventListener('click', (e) => {

@@ -9,7 +9,7 @@ template.innerHTML = `
 </section>
 `;
 
-export class TodlElement extends HTMLElement {
+export class TodoElement extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({mode: 'open'});

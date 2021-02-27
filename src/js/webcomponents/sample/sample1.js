@@ -6,6 +6,7 @@ font-weight: bold;
 }
 </style>
 <p>Sample Cstom Element!</p>
+<slot name="my-text">デフォルトテキスト</slot>
 `;
 export class SampleElement extends HTMLElement {
     constructor() {
