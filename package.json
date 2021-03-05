@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/dragonHead/Intellectual-humility#readme",
   "devDependencies": {
-    "npm-check-updates": "^11.1.9",
+    "npm-check-updates": "^11.1.10",
     "snowpack": "^3.0.13"
   },
   "dependencies": {},

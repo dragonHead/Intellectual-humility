@@ -26,14 +26,54 @@
         }
       ]
     },
-    "js/webcomponents/sample1.js": {
-      "bytes": 1280,
+    "js/webcomponents/sample/sample1.js": {
+      "bytes": 1270,
       "imports": []
+    },
+    "js/webcomponents/sample/app.js": {
+      "bytes": 95,
+      "imports": [
+        {
+          "path": "js/webcomponents/sample/sample1.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "js/webcomponents/sample2/input.js": {
+      "bytes": 783,
+      "imports": []
+    },
+    "js/webcomponents/sample2/item.js": {
+      "bytes": 1922,
+      "imports": []
+    },
+    "js/webcomponents/sample2/todo.js": {
+      "bytes": 1886,
+      "imports": [
+        {
+          "path": "js/webcomponents/sample2/input.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "js/webcomponents/sample2/item.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "js/webcomponents/sample2/app.js": {
+      "bytes": 88,
+      "imports": [
+        {
+          "path": "js/webcomponents/sample2/todo.js",
+          "kind": "import-statement"
+        }
+      ]
     }
   },
   "outputs": {
     "../~~bundle~~/css/app.css": {
       "imports": [],
+      "entryPoint": "css/app.css",
       "inputs": {
         "css/base.css": {
           "bytesInOutput": 185
@@ -47,6 +87,7 @@
     "../~~bundle~~/js/app.js": {
       "imports": [],
       "exports": [],
+      "entryPoint": "js/app.js",
       "inputs": {
         "js/sub.js": {
           "bytesInOutput": 34
@@ -57,15 +98,39 @@
       },
       "bytes": 39
     },
-    "../~~bundle~~/js/webcomponents/sample1.js": {
+    "../~~bundle~~/js/webcomponents/sample/app.js": {
       "imports": [],
       "exports": [],
+      "entryPoint": "js/webcomponents/sample/app.js",
       "inputs": {
-        "js/webcomponents/sample1.js": {
-          "bytesInOutput": 640
+        "js/webcomponents/sample/sample1.js": {
+          "bytesInOutput": 683
+        },
+        "js/webcomponents/sample/app.js": {
+          "bytesInOutput": 36
         }
       },
-      "bytes": 641
+      "bytes": 720
+    },
+    "../~~bundle~~/js/webcomponents/sample2/app.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "js/webcomponents/sample2/app.js",
+      "inputs": {
+        "js/webcomponents/sample2/input.js": {
+          "bytesInOutput": 566
+        },
+        "js/webcomponents/sample2/item.js": {
+          "bytesInOutput": 1321
+        },
+        "js/webcomponents/sample2/todo.js": {
+          "bytesInOutput": 1216
+        },
+        "js/webcomponents/sample2/app.js": {
+          "bytesInOutput": 34
+        }
+      },
+      "bytes": 3138
     }
   }
 }
