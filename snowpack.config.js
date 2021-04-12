@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     mount: {
       src: {url: "/"},
       public: { url: '/', static: true }

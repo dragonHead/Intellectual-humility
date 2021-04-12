@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "github page / Intellectual-humility",
   "main": "docs/index.html",
+  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "start": "snowpack dev",
@@ -19,8 +20,8 @@
   },
   "homepage": "https://github.com/dragonHead/Intellectual-humility#readme",
   "devDependencies": {
-    "npm-check-updates": "^11.1.10",
-    "snowpack": "^3.0.13"
+    "npm-check-updates": "^11.4.1",
+    "snowpack": "^3.2.2"
   },
   "dependencies": {},
   "private": true
