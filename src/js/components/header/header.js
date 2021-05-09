@@ -1,4 +1,4 @@
-var d=Object.defineProperty;var r=(o,e,a)=>e in o?d(o,e,{enumerable:!0,configurable:!0,writable:!0,value:a}):o[e]=a;var l=(o,e,a)=>(r(o,typeof e!="symbol"?e+"":e,a),a);function n(){console.log("hello")}var h=`
+const style = `
 .header {
   grid-column: 1;
   grid-row: 1;
@@ -37,7 +37,9 @@ a {
   padding: 8px;
   color: #fff;
 }
-`,s=`
+`;
+
+const header = `
 <header class="header">
   <h1 class="logo"><a href="/">Monaka</a></h1>
   <div class="header_nav">
@@ -49,5 +51,24 @@ a {
     </nav>
   </div>
 </header>
-`,t=class extends HTMLElement{constructor(){super();l(this,"shadowRoot");this.shadowRoot=this.attachShadow({mode:"open"})}connectedCallback(){let e=document.createElement("style"),a=document.createElement("template");e.textContent=h,a.innerHTML=s,this.shadowRoot.appendChild(e),this.shadowRoot.appendChild(a),this.shadowRoot.appendChild(a.content.cloneNode(!0))}};n();customElements.define("m-header",t);
-//# sourceMappingURL=app.js.map
+`;
+
+export class HeaderElement extends HTMLElement {
+
+  shadowRoot;
+
+  constructor() {
+    super();
+    this.shadowRoot = this.attachShadow({mode: 'open'});
+  }
+
+  connectedCallback() {
+    const styleElement = document.createElement('style');
+    const templateElement = document.createElement('template');
+    styleElement.textContent = style;
+    templateElement.innerHTML = header;
+    this.shadowRoot.appendChild(styleElement);
+    this.shadowRoot.appendChild(templateElement);
+    this.shadowRoot.appendChild(templateElement.content.cloneNode(true));
+  }
+}
