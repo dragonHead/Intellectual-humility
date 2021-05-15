@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+.header {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 8px;
+    background: #1a6ccc;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header .logo a {
+  color: #fff;
+}
+
+.header .header_nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header .header_nav li {
+  display: inline-block;
+}
+
+.header .header_nav a {
+  padding: 8px;
+  color: #fff;
+}

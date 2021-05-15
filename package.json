@@ -1,7 +1,7 @@
 {
-  "name": "intellectual-humility",
+  "name": "monaka",
   "version": "1.0.0",
-  "description": "github page / Intellectual-humility",
+  "description": "github page / monaka",
   "main": "docs/index.html",
   "type": "module",
   "scripts": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dragonHead/Intellectual-humility.git"
+    "url": "git+https://github.com/dragonHead/monaka.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dragonHead/Intellectual-humility/issues"
+    "url": "https://github.com/dragonHead/monaka/issues"
   },
-  "homepage": "https://github.com/dragonHead/Intellectual-humility#readme",
+  "homepage": "https://github.com/dragonHead/monaka#readme",
   "devDependencies": {
     "npm-check-updates": "^11.5.10",
     "snowpack": "^3.3.7"

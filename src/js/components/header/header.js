@@ -1,61 +1,15 @@
-const style = `
-.header {
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0 8px;
-  background: #1a6ccc;
-}
-
-a {
-  text-decoration: none;
-}
-
-.header .logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.header .logo a {
-  color: #fff;
-}
-
-.header .header_nav {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.header .header_nav li {
-  display: inline-block;
-}
-
-.header .header_nav a {
-  padding: 8px;
-  color: #fff;
-}
-`;
-
-const header = `
-<header class="header">
-  <h1 class="logo"><a href="/">Monaka</a></h1>
-  <div class="header_nav">
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="about.html">about</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-`;
-
+import { LogoElement } from './logo';
+import { NavElement } from './nav';
 export class HeaderElement extends HTMLElement {
 
   shadowRoot;
+
+  header = `
+<header class="header">
+  <m-logo></m-logo>
+  <m-nav class="nv"></m-nav>
+</header>
+`;
 
   constructor() {
     super();
@@ -63,12 +17,17 @@ export class HeaderElement extends HTMLElement {
   }
 
   connectedCallback() {
-    const styleElement = document.createElement('style');
+    const linkElement = document.createElement('link');
+    linkElement.setAttribute('rel', 'stylesheet');
+    linkElement.setAttribute('href', 'css/components/header/header.css');
+
     const templateElement = document.createElement('template');
-    styleElement.textContent = style;
-    templateElement.innerHTML = header;
-    this.shadowRoot.appendChild(styleElement);
-    this.shadowRoot.appendChild(templateElement);
+    templateElement.innerHTML = this.header;
+
+    this.shadowRoot.appendChild(linkElement);
     this.shadowRoot.appendChild(templateElement.content.cloneNode(true));
   }
 }
+
+customElements.define('m-logo', LogoElement);
+customElements.define('m-nav', NavElement);
