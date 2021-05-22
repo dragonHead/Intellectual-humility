@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/dragonHead/monaka#readme",
   "devDependencies": {
-    "npm-check-updates": "^11.5.10",
-    "snowpack": "^3.3.7"
+    "npm-check-updates": "^11.5.13",
+    "snowpack": "^3.5.1"
   },
   "dependencies": {},
   "private": true
