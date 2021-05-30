@@ -97,6 +97,7 @@ self.addEventListener('fetch', event => {
                 try {
                   const preloadResponse = await event.preloadResponse;
                   if (preloadResponse) {
+                    console.log("Preload Response", preloadResponse);
                     return preloadResponse;
                   }
 
@@ -114,8 +115,7 @@ self.addEventListener('fetch', event => {
         } else {
             event.respondWith(
                 (async () => {
-                    const cache = await caches.open(`${MAIN_CACHE}`);
-                    const cachedResponse = await cache.match(event.request);
+                    const cachedResponse = await caches.match(event.request);
                     if (cachedResponse) {
                         // 利用可能なキャッシュと一致する場合
                         console.debug(`cache match response: `, event.request)
@@ -129,6 +129,7 @@ self.addEventListener('fetch', event => {
                     }
 
                     const responseClone = await networkResponse.clone();
+                    const cache = await caches.open(`${MAIN_CACHE}`);
                     await cache.put(event.request, responseClone);
 
                     console.debug(`fetch response: `, event.request)
