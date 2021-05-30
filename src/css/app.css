@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import './base.css';
+@import url("./base.css");
 
 .container {
   display: grid;
