@@ -8,38 +8,38 @@ const OFFLINE_CACHE_NAME = `monacache_offline`;
 const OFFLINE_CACHE_VERSION = `0.1.0`;
 const OFFLINE_CACHE = `${OFFLINE_CACHE_NAME}_${OFFLINE_CACHE_VERSION}`;
 
-const CACHE_LIST = [
-    '/monaka/',
-    '/monaka/index.html',
-    '/monaka/about.html',
-    '/monaka/404.html',
-    '/monaka/manifest.json',
-    '/css/components/header/header.css',
-    '/css/components/header/logo.css',
-    '/css/components/header/nav.css',
-    '/css/app.css',
-    '/monaka/js/app.js',
-    '/monaka/js/about.js',
-];
-
 // const CACHE_LIST = [
-//     '/',
-//     '/index.html',
-//     '/about.html',
-//     '/404.html',
-//     '/manifest.json',
-//     '/css/app.css',
-//     '/css/base.css',
+//     '/monaka/',
+//     '/monaka/index.html',
+//     '/monaka/about.html',
+//     '/monaka/404.html',
+//     '/monaka/manifest.json',
 //     '/css/components/header/header.css',
 //     '/css/components/header/logo.css',
 //     '/css/components/header/nav.css',
-//     '/js/app.js',
-//     '/js/sub.js',
-//     '/js/about.js',
-//     '/js/components/header/header.js',
-//     '/js/components/header/logo.js',
-//     '/js/components/header/nav.js',
+//     '/css/app.css',
+//     '/monaka/js/app.js',
+//     '/monaka/js/about.js',
 // ];
+
+const CACHE_LIST = [
+    '/',
+    '/index.html',
+    '/about.html',
+    '/404.html',
+    '/manifest.json',
+    '/css/app.css',
+    '/css/base.css',
+    '/css/components/header/header.css',
+    '/css/components/header/logo.css',
+    '/css/components/header/nav.css',
+    '/js/app.js',
+    '/js/sub.js',
+    '/js/about.js',
+    '/js/components/header/header.js',
+    '/js/components/header/logo.js',
+    '/js/components/header/nav.js',
+];
 
 // install
 self.addEventListener('install', event => {
@@ -90,8 +90,11 @@ self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
 
     if (url.origin == location.origin) {
+        // ナビゲーション リクエストは、ブラウザのロケーション バーにURL を入力したり、
+        // window.locationと対話したり、リンクをクリックしてあるウェブページから別のウェブページにアクセスしたりするときに発生する。
+        // iframeのsrc要求でも発生する。
         if (event.request.mode === "navigate") {
-            console.log("navigate...");
+            console.log("navigate...", event.request);
             event.respondWith(
               (async () => {
                 try {

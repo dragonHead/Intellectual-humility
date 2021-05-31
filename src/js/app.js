@@ -7,8 +7,8 @@ customElements.define('m-header', HeaderElement);
 // service worker
 window.addEventListener('load', () => {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/monaka/sw.js', {scope: '/monaka/'})
-        // navigator.serviceWorker.register('/sw.js')
+        // navigator.serviceWorker.register('/monaka/sw.js', {scope: '/monaka/'})
+        navigator.serviceWorker.register('/sw.js')
         .then((registration) => {
             let sw = registration.installing || registration.waiting || registration.active;
             console.log(`service worker: ${sw.state} `, registration.scope);
@@ -27,6 +27,13 @@ window.addEventListener('load', () => {
                 // インストール中のservice workerの状態変更
                 // installWorker.addEventListener('statechange', e =>{});
             });
+
+            // registration.unregister().then((bool) => {
+            //     if (bool) {
+            //         // trueなら登録解除成功
+            //         console.log("登録を解除しました。");
+            //     }
+            // });
         }).catch((error) => {
             console.log(`service worker 登録失敗 `, error);
         });
