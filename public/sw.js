@@ -43,14 +43,21 @@ const CACHE_LIST = [
 
 // install
 self.addEventListener('install', event => {
+    const preCache = async () => {
+        const cache = await caches.open(`${MAIN_CACHE}`);
+        return cache.addAll(CACHE_LIST);
+    }
+
+    const offlineCache = async () => {
+        const cache = await caches.open(`${OFFLINE_CACHE}`);
+        return cache.add("/offline.html", { cache: "reload"});
+    }
+
     event.waitUntil(
         (async() => {
             console.log(`Open cache`);
-            const cache = await caches.open(`${MAIN_CACHE}`);
-            await cache.addAll(CACHE_LIST);
-
-            const offline_cache = await caches.open(`${OFFLINE_CACHE}`);
-            await offline_cache.add("/offline.html", { cache: "reload"});
+            preCache();
+            offlineCache();
         })()
     )
 
