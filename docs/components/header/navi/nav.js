@@ -4,7 +4,7 @@ export default class NavElement extends HTMLElement {
 
   #root;
   #navilist = [
-    {text: 'Home', href: '/'},
+    {text: 'Home', href: `${APP_HOME}`},
     {text: 'About', href: 'about.html'}
   ];
 
