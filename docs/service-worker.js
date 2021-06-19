@@ -32,7 +32,7 @@ self.addEventListener('install', event => {
   const offlineCache = async () => {
     console.debug(`add offline cache`);
     const cache = await caches.open(`${OFFLINE_CACHE}`);
-    return cache.add("/offline.html", { cache: "reload"});
+    return cache.add(`${APP_SCOPE}offline.html`, { cache: "reload"});
   }
 
   event.waitUntil(
