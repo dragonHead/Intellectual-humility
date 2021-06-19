@@ -3,10 +3,10 @@
   "dir": "ltr",
   "name": "monaka",
   "short_name": "monaka",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
-  "orientation": "portrait",
+  "theme_color": "#1a6ccc",
   "background_color": "#fff",
-  "theme_color": "#fff",
-  "description": ""
+  "description": "",
+  "orientation": "portrait"
 }

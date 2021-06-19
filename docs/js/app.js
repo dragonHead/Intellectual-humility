@@ -1,17 +1,55 @@
-var i=Object.defineProperty;var d=(o,e,t)=>e in o?i(o,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):o[e]=t;var n=(o,e,t)=>(d(o,typeof e!="symbol"?e+"":e,t),t);function c(){console.log("hello")}var a=class extends HTMLElement{constructor(){super();n(this,"shadowRoot");n(this,"siteName","Monaka");this.shadowRoot=this.attachShadow({mode:"open"})}connectedCallback(){let e=document.createElement("link");e.setAttribute("rel","stylesheet"),e.setAttribute("href","css/components/header/logo.css");let t=document.createElement("a");t.setAttribute("href","/"),t.textContent=this.siteName;let s=document.createElement("h1");s.setAttribute("class","logo"),s.appendChild(t),document.createElement("template").appendChild(s),this.shadowRoot.appendChild(e),this.shadowRoot.appendChild(s.cloneNode(!0))}};var l=class extends HTMLElement{constructor(){super();n(this,"shadowRoot");this.shadowRoot=this.attachShadow({mode:"open"}),this._navilist=[{text:"Home",href:"/"},{text:"About",href:"about.html"}]}connectedCallback(){let e=document.createElement("link");e.setAttribute("rel","stylesheet"),e.setAttribute("href","css/components/header/nav.css");let t=document.createElement("template");t.innerHTML=`
-      <div class="header_nav">
-        <nav>
-          <ul>
-          ${this._navilist.map(s=>`
-            <li><a href="${s.href}">${s.text}</a></li>
-          `).join("")}
-          </ul>
-        </nav>
-      </div>
-      `,this.shadowRoot.appendChild(e),this.shadowRoot.appendChild(t.content.cloneNode(!0))}};var r=class extends HTMLElement{constructor(){super();n(this,"shadowRoot");n(this,"header",`
-<header class="header">
-  <m-logo></m-logo>
-  <m-nav class="nv"></m-nav>
-</header>
-`);this.shadowRoot=this.attachShadow({mode:"open"})}connectedCallback(){let e=document.createElement("link");e.setAttribute("rel","stylesheet"),e.setAttribute("href","css/components/header/header.css");let t=document.createElement("template");t.innerHTML=this.header,this.shadowRoot.appendChild(e),this.shadowRoot.appendChild(t.content.cloneNode(!0))}};customElements.define("m-logo",a);customElements.define("m-nav",l);c();customElements.define("m-header",r);window.addEventListener("load",()=>{"serviceWorker"in navigator?(navigator.serviceWorker.register("/monaka/sw.js",{scope:"/monaka/"}).then(o=>{let e=o.installing||o.waiting||o.active;console.log(`service worker: ${e.state} `,o.scope),e&&e.addEventListener("statechange",t=>{console.log(`service worker change state: ${t.target.state}`)}),o.addEventListener("updatefound",()=>{let t=o.installing;console.log("新しいservice workerをインストールしています。",t)})}).catch(o=>{console.log("service worker 登録失敗 ",o)}),navigator.serviceWorker.controller&&console.log("このページは現在 service worker によって制御されています。",navigator.serviceWorker.controller),navigator.serviceWorker.addEventListener("controllerchange",()=>{console.log("このページは今 service worker によって制御されています。",navigator.serviceWorker.controller)})):console.log("service workerをサポートしていません。")});
-//# sourceMappingURL=app.js.map
+import { APP_SCOPE } from '../config.js';
+
+import HeaderElement from '../components/header/header.js';
+customElements.define('m-header', HeaderElement);
+
+window.addEventListener("beforeinstallprompt", async (e) => {
+  console.debug(e.platforms);
+});
+
+// service worker
+window.addEventListener('load', () => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(`${APP_SCOPE}service-worker.js`, { type: 'module', scope: `${APP_SCOPE}`})
+    .then((registration) => {
+      let sw = registration.installing || registration.waiting || registration.active;
+      console.log(`service worker: ${sw.state} `, registration.scope);
+
+      if (sw) {
+        // installing, installed, activating, activated, redundant
+        sw.addEventListener('statechange', e => {
+          console.log(`service worker change state: ${e.target.state}`);
+        });
+      }
+
+      registration.addEventListener('updatefound', () => {
+        // 新しいサービスワーカーを取得時
+        let installWorker = registration.installing;
+        console.log(`新しいservice workerをインストールしています。`, installWorker);
+        // インストール中のservice workerの状態変更
+        // installWorker.addEventListener('statechange', e =>{});
+      });
+
+      // registration.unregister().then((bool) => {
+      //   if (bool) {
+      //     // trueなら登録解除成功
+      //     console.log("登録を解除しました。");
+      //   }
+      // });
+    }).catch((error) => {
+      console.log(`service worker 登録失敗 `, error);
+    });
+
+    // 現在service workerが制御されているかどうか。
+    if (navigator.serviceWorker.controller) {
+      console.log(`このページは現在 service worker によって制御されています。`, navigator.serviceWorker.controller)
+    }
+
+    // 新しいactiveなワーカーを取得すると発生
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      console.log(`このページは今 service worker によって制御されています。`, navigator.serviceWorker.controller);
+    })
+  } else {
+    console.log(`service workerをサポートしていません。`);
+  }
+});

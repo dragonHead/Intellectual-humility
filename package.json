@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "snowpack dev",
-    "build": "snowpack build"
+    "start": "npx http-server docs"
   },
   "repository": {
     "type": "git",
@@ -20,8 +19,8 @@
   },
   "homepage": "https://github.com/dragonHead/monaka#readme",
   "devDependencies": {
-    "npm-check-updates": "^11.6.0",
-    "snowpack": "^3.5.6"
+    "http-server": "^0.12.3",
+    "npm-check-updates": "^11.7.1"
   },
   "dependencies": {},
   "private": true
