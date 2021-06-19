@@ -1,8 +1,9 @@
+
+import { APP_HOME } from '../../../config.js';
 export default class LogoElement extends HTMLElement {
 
   #root;
   siteName = 'Monaka';
-  #origin = location.origin;
 
   constructor() {
     super();
@@ -17,7 +18,7 @@ export default class LogoElement extends HTMLElement {
   #style() {
     const linkElement = document.createElement('link');
     linkElement.setAttribute('rel', 'stylesheet');
-    linkElement.setAttribute('href', `${this.#origin}/components/header/logo/logo.css`);
+    linkElement.setAttribute('href', `${APP_HOME}/components/header/logo/logo.css`);
     return linkElement;
   }
 
@@ -25,7 +26,7 @@ export default class LogoElement extends HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `
       <h1 class="logo">
-        <a href="${this.#origin}">${this.siteName}</a>
+        <a href="${APP_HOME}">${this.siteName}</a>
       </h1>
     `;
 

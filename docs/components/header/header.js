@@ -1,3 +1,4 @@
+import { APP_HOME } from '../../config.js';
 import LogoElement from './logo/logo.js';
 import NavElement from './navi/nav.js';
 
@@ -7,7 +8,6 @@ customElements.define('m-nav', NavElement);
 export default class HeaderElement extends HTMLElement {
 
   #root;
-  #origin = location.origin;
 
   constructor() {
     super();
@@ -22,7 +22,7 @@ export default class HeaderElement extends HTMLElement {
   #style() {
     const linkElement = document.createElement('link');
     linkElement.setAttribute('rel', 'stylesheet');
-    linkElement.setAttribute('href', `${this.#origin}/components/header/header.css`);
+    linkElement.setAttribute('href', `${APP_HOME}/components/header/header.css`);
     return linkElement;
   }
 

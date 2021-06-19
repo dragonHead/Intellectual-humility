@@ -1,7 +1,8 @@
+import { APP_HOME } from '../../../config.js';
+
 export default class NavElement extends HTMLElement {
 
   #root;
-  #origin = location.origin;
   #navilist = [
     {text: 'Home', href: '/'},
     {text: 'About', href: 'about.html'}
@@ -20,7 +21,7 @@ export default class NavElement extends HTMLElement {
   #style() {
     const linkElement = document.createElement('link');
     linkElement.setAttribute('rel', 'stylesheet');
-    linkElement.setAttribute('href', `${this.#origin}/components/header/navi/nav.css`);
+    linkElement.setAttribute('href', `${APP_HOME}/components/header/navi/nav.css`);
     return linkElement;
   }
 
