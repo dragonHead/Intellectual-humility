@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/dragonHead/monaka#readme",
   "devDependencies": {
-    "http-server": "^0.12.3",
+    "express": "^4.17.1",
     "npm-check-updates": "^11.7.1"
   },
   "dependencies": {},
