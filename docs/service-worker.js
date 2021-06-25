@@ -101,7 +101,7 @@ self.addEventListener('fetch', event => {
           console.debug("Fetch failed; returning offline page instead.", error);
 
           const cache = await caches.open(OFFLINE_CACHE);
-          const cachedResponse = await cache.match("/offline.html");
+          const cachedResponse = await cache.match(`${APP_SCOPE}offline.html`);
           return cachedResponse;
         }
       })())
