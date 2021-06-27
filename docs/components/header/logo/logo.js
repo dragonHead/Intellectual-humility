@@ -8,17 +8,17 @@ export default class LogoElement extends HTMLElement {
   constructor() {
     super();
     this.#root = this.attachShadow({mode: 'open'});
+    this.#root.appendChild(this.#style());
+    this.#root.appendChild(this.#template());
   }
 
   connectedCallback() {
-    this.#root.appendChild(this.#style());
-    this.#root.appendChild(this.#template());
   }
 
   #style() {
     const linkElement = document.createElement('link');
     linkElement.setAttribute('rel', 'stylesheet');
-    linkElement.setAttribute('href', `${APP_HOME}/components/header/logo/logo.css`);
+    linkElement.setAttribute('href', `${APP_HOME}components/header/logo/logo.css`);
     return linkElement;
   }
 
