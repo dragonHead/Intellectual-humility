@@ -1,22 +1,34 @@
-self.addEventListener('message', (msg) => {
-  console.debug("self!!!!!!");
-  console.debug('Worker: Message received from main script', msg.data.message);
-
-  self.postMessage({ message: 'Posting message back to main script'});
-})
-
 // Dedicated workerからDedicated Workerを作ることはできる。
 // 現在はShared Worker,Service WorkerからDedicated Worker作ったり、また逆も作ることはできない。
 const child_worker = new Worker('child_worker.js');
-child_worker.addEventListener('message', (msg) => {
-  console.debug("child!!!!!!");
-  const childMessage = msg.data;
-  self.postMessage(childMessage);
+
+self.addEventListener('message', (event) => {
+  console.debug('[Worker] Message received from main script: ', event.data.message);
+
+  // self.postMessage({ message: 'Posting message back to main script'});
+  if (event.data.message) {
+    child_worker.postMessage({ message: event.data.message});
+  }
 })
 
-child_worker.addEventListener('error', (err) => {
+self.addEventListener('messageerror', (event) => {
+  console.log(event);
+})
+
+child_worker.addEventListener('message', (event) => {
+  if (event.data.message) {
+    const childMessage = event.data;
+    self.postMessage(childMessage);
+  }
+})
+
+child_worker.addEventListener('error', (error) => {
   console.debug('There is an error with child worker!',
-   {message: err.message, filename: err.filename, lineno: err.lineno}
+   {message: error.message, filename: error.filename, lineno: error.lineno}
   );
+})
+
+child_worker.addEventListener('messageerror', (event) => {
+  console.debug(event);
 })
 
